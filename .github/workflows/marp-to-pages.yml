@@ -1,21 +1,17 @@
 name: marp-to-pages
-concurrency: marp-to-pages
+
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - closed
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
 
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
 
       - name: Copy images
         run: mkdir -p build/Slides && cp -R Slides/images build/Slides
@@ -25,9 +21,9 @@ jobs:
         with:
           args: -I Slides/ -o build/Slides/ --pdf --html --allow-local-files --theme-set Slides/styles/
         env:
-          MARP_USER: $(id -u):$(id -g)
+          MARP_USER: root:root
 
-      - name: Deploy production
+      - name: Deploy 🚀
         if: ${{ github.event_name == 'push' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
