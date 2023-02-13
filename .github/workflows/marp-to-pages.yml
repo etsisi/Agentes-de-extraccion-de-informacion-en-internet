@@ -23,9 +23,9 @@ jobs:
       - name: Marp Build PDFs
         uses: docker://marpteam/marp-cli:v1.7.0
         with:
-          args: -I Slides/ -o build/Slides/ --pdf --html --allow-local-files --theme-set Slides/style/
+          args: -I Slides/ -o build/Slides/ --pdf --html --allow-local-files --theme-set Slides/styles/
         env:
-          MARP_USER: root:root
+          MARP_USER: $(id -u):$(id -g)
 
       - name: Deploy production
         if: ${{ github.event_name == 'push' }}
