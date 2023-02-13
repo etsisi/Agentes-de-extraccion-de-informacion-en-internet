@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,10 +27,8 @@ jobs:
           MARP_USER: root:root
 
       - name: Deploy 🚀
-        if: ${{ github.event_name == 'push' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
           folder: ./build/
           clean-exclude: pr-preview/
 
