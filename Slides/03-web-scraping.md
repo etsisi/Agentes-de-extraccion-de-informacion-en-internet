@@ -15,11 +15,11 @@ theme       : etsisi
 
 ## Agentes de extracción de información en Internet
 
-### Alberto Díaz Álvarez y Francisco Serradilla García
+### Departamento de Sistemas Informáticos
 
-#### Departamento de Sistemas Informáticos
+#### Escuela Técnica superior de Ingeniería de Sistemas Informáticos - UPM
 
-##### Escuela Técnica superior de Ingeniería de Sistemas Informáticos - UPM
+##### 16 de febrero de 2024
 
 [![height:30](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-informational.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
@@ -31,10 +31,10 @@ Técnica para **extraer información de sitios web** mediante programas de softw
 
 - Es la única opción si un sitio no ofrece una API (o si lo hace, pero insuficiente)
 
-Parecer complicado, pero en realidad es muy sencillo, y que se basa en dos procesos:
+Es extremadamente sencillo; se basa en dos procesos:
 
-1. Navegar por los sitios web (los procesos que navegan denominan *spiders* o *crawlers*)
-2. Extraer de datos de sitio web (*scraping*)
+1. Navegar por sitios web (los procesos que navegan denominan _spiders_ o _crawlers_)
+2. Extraer de datos de sitio web (_scraping_)
 
 Es muy útil, pero tiene ciertos **inconvenientes**
 
@@ -45,7 +45,7 @@ Es muy útil, pero tiene ciertos **inconvenientes**
 
 ---
 
-# ¿Para qué se utiliza el *web scraping*?
+# ¿Para qué se utiliza el _web scraping_?
 
 Algunos de los dominios de aplicación del _web scraping_ son:
 
@@ -63,13 +63,13 @@ Algunos de los dominios de aplicación del _web scraping_ son:
 
 Es lógico que algunas páginas web protejan sus datos contra el web scraping
 
-- No es infalible, prácticamente todo lo se puede hacer con un navegador es replicable
+- No es infalible, prácticamente **todo** lo que hace un navegador es replicable
 - Nos queda el consuelo que al menos dificultan la tarea
 
-Existen varias técnicas para protegerse contra el web scraping, entre las que están:
+Existen varias técnicas para protegerse contra el web scraping, entre ellas:
 
 - **Análisis del comportamiento del usuario**: Técnicas orientadas a detectar si el usuario es un humano o un robot en función de su comportamiento
-- **Bloqueo de IP**: Bloquear aquellas que acceden a la página con demasiada frecuencia
+- **Bloqueo de IP**: Cortar acceso a IP identificadas como _bots_
 - **Captcha**<sup>2</sup>: Imagen con texto para demostrar que quien accede es humano<sup>3</sup>
 - **Fichero `robots.txt`**: Archivo que indica a los robots qué rutas no deben visitar
 - **HoneyPot**: Sitio falso para la detección de robots
@@ -99,7 +99,7 @@ En España, la Ley de Servicios de la Sociedad de la Información y de Comercio 
 
 ---
 
-# Creación de robots software con Python<!--_class: section-->
+# <!-- fit -->Creación de robots software con Python<!--_class: section-->
 
 ---
 
@@ -151,7 +151,6 @@ Así nos aseguramos de que todo carácter especial es codificado correctamente
 
 Una petición de tipo POST envía los parámetros en el cuerpo de la petición
 
-- No tiene sentido mandar parámetros porque no tendremos acceso a la *query string*
 - POST es más flexible que GET, ya que permite enviar datos binarios (e.g. ficheros)
 
 Para enviar datos por POST, basta con crear la _request_ con datos:
@@ -192,7 +191,7 @@ Los formularios se pueden enviar también por `GET`
 De hecho, es una de las características de `POST` frente a `GET`
 
 - Es similar al caso anterior, pero enviando el contenido de un fichero
-- Es conveniente añadir ciertas cabeceras para indicar el tamaño y el tipo de contenido
+- Es útil añadir ciertas cabeceras para indicar el tamaño y el tipo de contenido
 
 Por ejemplo, para enviar una imagen PNG:
 
@@ -293,7 +292,7 @@ Es un factor más a la hora de detectar comportamientos no humanos
 
 # Cabecera *User-Agent*
 
-El servidor utiliza esta información para identificar y adaptar el contenido al cliente
+Ayuda al servidor a identificar y adaptar el contenido al cliente
 
 - Por ejemplo, si el cliente es un navegador web, un teléfono móvil, un reproductor multimedia, etc.
 
@@ -310,11 +309,11 @@ Suelen seguir el formato:
 
 Es importante porque ayuda a enmascarar el scraper como un navegador web
 
-- Si el agente de usuario está mal formado, lo más normal es que el servidor lo bloquee
+- Si está mal formado, lo más normal es que el servidor lo bloquee
 
 ---
 
-# Cabecera _Referer_
+# Cabecera _Referer_<sup>5</sup>
 
 Indica la URL de la página desde la que se ha hecho la petición
 
@@ -326,15 +325,18 @@ request.add_header('Referer', 'https://www.google.com/')
 Esta cabecera es importante para identificar patrones de uso en usuarios
 
 - Y los usuarios no suelen entrar en páginas web de forma aleatoria
-- Suelen venir de buscadores web, redes sociales, etc.
+- Suelen venir de buscadores web, redes sociales, etétera
 
-Es interesante especificar esta cabecera para que el agente parezca más "humano"
+Especificar esta cabecera para que el agente parezca más «humano»
 
+> ¿Os habéis fijado que está mal escrito? Debería ser _Referrer_. Más
+> información en <https://en.wikipedia.org/wiki/HTTP_referer>
 ---
 
 # Forma alternativa de establecer cabeceras
 
-El posible especificar un diccionario con las cabeceras al construir la _request_:
+El posible especificar un diccionario con las cabeceras al construir la
+_request_:
 
 ```python
 request = Request(url, data=None, headers={
@@ -356,7 +358,7 @@ No es ni mejor ni peor, es simplemente otra forma de hacerlo
 
 # Sobre esta biblioteca
 
-Simplifica el trabajo con HTTP respecto a `urllib`. Entre sus características destacan:
+Simplifica mucho el trabajo con HTTP. Entre sus características destacan:
 
 - Facilidad de uso de _cookies_ para mantener sesiones
 - Codificación automática del contenido de las respuestas
@@ -582,18 +584,18 @@ Veamos una pqueña introducción a cada uno de ellos
 
 ---
 
-# Extrayendo información del contenido<!--_class: section-->
+### Extrayendo información del contenido<!--_class: section-->
 
-### Expresiones regulares
+# Expresiones regulares
 
 ---
 
 # Expresiones regulares
 
-Las expresiones regulares son un mecanismo muy potente de definir lenguajes (y estructuras) de tipo 3
+Mecanismo muy potente de definir lenguajes (y estructuras) de tipo 3
 
-- Son muy compactas y (relativamente) fáciles de entender
-- Prácticamente cualquier lenguaje de programación las soporta
+- Son muy **compactas** y (relativamente) **fáciles** de entender
+- Prácticamente **cualquier lenguaje de programación** las soporta
 
 Son cadenas de texto que intentamos que "encajen" con el texto que queremos extraer
 
@@ -651,7 +653,7 @@ En _scraping_ se suele usar siempre el encaje no voraz
 
 # Comprobar existencia de un texto
 
-Podemos determinar la existencia de cierto texto o patrón mediante la función `search`
+Podemos determinar la existencia de cierto texto o patrón mediante `search`
 
 ```python
 import re
@@ -720,11 +722,11 @@ xtr += '.*?<td>(.*?)</td>' # incidencia
 
 Hay herramientas online que ayudan a explicar los patrones que necesitamos
 
-- <www.regex101.com>
+- Por ejemplo, <https://www.regex101.com>
 
 ---
 
-# Extrayendo información del contenido<!--_class: section-->
+### Extrayendo información del contenido<!--_class: section-->
 
 # XPath
 
@@ -732,7 +734,7 @@ Hay herramientas online que ayudan a explicar los patrones que necesitamos
 
 # ¿Qué es XPath?
 
-Se trata de un lenguaje de consula para navegar a través de documentos XML y HTML
+Lenguaje de consula para navegar a través de documentos XML y HTML
 
 - Desarrollado por el W3C como parte de la recomendación XSLT<sup>6</sup>
 - Permite seleccionar nodos y elementos específicos dentro de un documento
@@ -775,6 +777,8 @@ print(tree.xpath('//a[@class="gs-c-block-link__overlay-link"]/text()'))
 ```
 
 ---
+
+### Extrayendo información del contenido
 
 # Biblioteca `selenium`<!--_class: section-->
 

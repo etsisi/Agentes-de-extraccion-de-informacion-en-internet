@@ -35,6 +35,7 @@ h1 {
 code {
   font-size: 100%;
   font-family: "Fira Code", monospace;
+  line-height: 1.2em;
   padding: 0em;
 }
 
@@ -52,6 +53,17 @@ section p {
   font-size: 100%;
 }
 
+section img {
+  display: block;
+  margin: auto;
+}
+
+section sup {
+  font-size: 0.4rem;
+  display: inline-block;
+  vertical-align:super;
+}
+
 section li {
   margin-top: 0.5em;
   margin-bottom: 0.25em;
@@ -59,9 +71,35 @@ section li {
   font-size: 95%;
 }
 
-/* Definition for bold text */
+section li>ul>li {
+  margin-top: 0.5em;
+  margin-bottom: 0.25em;
+  line-height: 1em;
+  font-size: 85%;
+}
+
+section i {
+  color: var(--color-error);
+  font-style: normal;
+}
+
+s {
+  text-decoration: none;
+  background-color: var(--color-warning)
+}
+
 section strong {
+  font-weight: 600;
+}
+
+section figcaption {
+  font-size: 0.7em;
   color: var(--color-primary);
+  text-align: center;
+}
+
+section figcaption>b{
+  text-align: center;
   font-weight: 600;
 }
 
@@ -112,14 +150,18 @@ section table tr:last-child {
   border-bottom: rgb(253, 74, 3) solid 2px;
 }
 
-tr:nth-child(even) {
+section tr:nth-child(even) {
   background-color: #e8edf1 !important;
 }
 
-tr:hover {
+section tr:hover {
   color: rgb(36, 34, 34);
   background-color: rgb(255, 204, 0);
   font-weight: bold;
+}
+
+section td, section th {
+  font-size: 0.7rem;
 }
 
 section blockquote {
@@ -139,7 +181,11 @@ section blockquote strong {
 }
 
 section blockquote p {
-  font-size: 0.7em;
+  font-size: 0.6em;
+}
+
+section blockquote sup {
+  vertical-align: sub;
 }
 
 .columns {
@@ -158,6 +204,11 @@ section blockquote p {
   align-items: center;
 }
 
+.columns-third {
+  display: grid;
+  grid-template-columns: 75fr 25fr;
+  gap: 1rem;
+}
 /* Estilos para la transparencia de título::after
 
   <!-- _class: titlepage -->
@@ -232,6 +283,8 @@ section.titlepage img {
   background-color: var(--background-color);
   border-top: 1px solid var(--color-primary);
   padding-top: 0.5em;
+  text-align: left;
+  margin: 0;
 }
 
 /* Omits page number in Title Page Slide */
@@ -342,7 +395,6 @@ section.cite p {
   text-align: center;
   line-height: 1.25em;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-  /*  font-style: oblique; */
   padding-top: auto;
   padding-bottom: auto;
   padding-left: 100px;
@@ -494,3 +546,4 @@ section.biblio header,
 section.biblio:after {
   display: none;
 }
+

@@ -15,11 +15,11 @@ theme       : etsisi
 
 ## Agentes de extracción de información en Internet
 
-### Alberto Díaz Álvarez y Francisco Serradilla García
+### Departamento de Sistemas Informáticos
 
-#### Departamento de Sistemas Informáticos
+#### Escuela Técnica superior de Ingeniería de Sistemas Informáticos - UPM
 
-##### Escuela Técnica superior de Ingeniería de Sistemas Informáticos - UPM
+##### 16 de febrero de 2024
 
 [![height:30](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-informational.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
@@ -46,7 +46,7 @@ HTTP se utiliza principalmente para transmitir recursos
 
 ---
 
-# <i>Uniform Resource Locator</i> (URL)
+# _Uniform Resource Locator_ (URL)
 
 Es la forma de identificar recursos en la Web, y tiene la siguiente estructura:
 
@@ -60,7 +60,7 @@ Por ejemplo:
 https://www.google.com/search?q=boniato+al+horno&sclient=gws-wiz-serp
 ```
 
-Si no se especifica el puerto se usa el de por defecto del protocolo (http: 80, https: 443)
+Si no se especifica el puerto se usa el de por defecto (http: 80, https: 443)
 
 ---
 
@@ -83,7 +83,7 @@ Una sesión HTTP se inicia cuando el cliente envía una petición al servidor
 
 # Mensajes en HTTP
 
-Toda comunicación entre dispositivos que usa HTTP se basa en dos tipos de mensaje
+Toda comunicación HTTP entre dispositivos se basa en dos tipos de mensaje
 
 - **Request**: mensaje enviado por el cliente al servidor
 - **Response**: mensaje enviado por el servidor al cliente
@@ -95,7 +95,7 @@ Ambos mensajes tienen caracterísiticas comunes y diferencias:
 - La request indica el método a utilizar y el recurso al que se quiere acceder
 - La response indica el código de estado de la respuesta
 
-La estructura de los mensajes difiere bastante entre los protocolos 1.1 y 2.0 de HTTP
+La estructura de los mensajes difiere bastante entre los protocolos 1.1 y 2.0
 
 - Lo bueno es que con las bibliotecas de Python nos abstraemos de ello
 
@@ -117,15 +117,15 @@ Esta es la teoría, porque luego muchas se implementan como se quiere
 
 ---
 
-# Códigos de estado (<i>status codes</i>)
+# Códigos de estado (_status codes_)
 
 Los códigos de estado son números de tres dígitos que indican el estado de la respuesta
 
-- 1xx: información
-- 2xx: éxito
-- 3xx: redirección
-- 4xx: error del cliente
-- 5xx: error del servidor
+- `1xx`: información
+- `2xx`: éxito
+- `3xx`: redirección
+- `4xx`: error del cliente
+- `5xx`: error del servidor
 
 Al igual que los métodos, los códigos de estado son estándar, pero no obligatorios
 

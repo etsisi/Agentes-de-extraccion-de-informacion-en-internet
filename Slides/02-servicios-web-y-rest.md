@@ -15,11 +15,11 @@ theme       : etsisi
 
 ## Agentes de extracción de información en Internet
 
-### Alberto Díaz Álvarez y Francisco Serradilla García
+### Departamento de Sistemas Informáticos
 
-#### 10 de febrero de 2023
+#### Escuela Técnica superior de Ingeniería de Sistemas Informáticos - UPM
 
-##### Departamento de Sistemas Informáticos - ETSISI - UPM
+##### 16 de febrero de 2024
 
 [![height:30](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-informational.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
@@ -50,11 +50,11 @@ En la actualidad, estos estándares están en desuso por el auge de la web
 
 Sus principios arquitectónicos son:
 
-- **Interfaz uniforme**: La información se envía en un formato estándar (XML, JSON, etc.)
+- **Interfaz uniforme**: La información se envía en formato estándar (XML, JSON, etc.)
 - **Sin estado**: El servidor completa solicitudes independientes (es inherente a HTTP)
 - **Distribuido**: Permite que varios servidores trabajen juntos
 - **Almacenamiento en caché**: Ayuda a mejorar el rendimiento
-- **Código bajo demanda**: El servidor puede enviar código al cliente para que lo ejecute
+- **Código bajo demanda**: El servidor puede enviar código al cliente para ejecutarlo
 
 Las API que siguen la arquitectura de REST se llaman **API RESTful**
 
